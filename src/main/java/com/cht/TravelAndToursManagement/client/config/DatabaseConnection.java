@@ -8,10 +8,13 @@ public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection() {
-        String databaseName = "CHT";
-        String databaseUser = "root";
-        String databasePassword = "password";
-        String url = "jdbc:mysql://localhost:3306/" + databaseName;
+        String databaseName = "cht";
+        String databaseUser = "jerico";
+        String databasePassword = "password@12345";
+        // String url = "jdbc:mysql://localhost:3306/" + databaseName;
+        String url = "jdbc:mysql://192.168.254.149:3306/" + databaseName;
+
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);

@@ -50,13 +50,15 @@ public class LoginController {
 
         String verifyLogin = "SELECT COUNT(1) FROM Employee WHERE Username = '" + usernameTextField.getText() + "' AND Password = '" + passwordPasswordField.getText() + "';";
 
+
         try {
             Statement statement = connectDB.createStatement();
             ResultSet queryResult = statement.executeQuery(verifyLogin);
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    new SceneChanger(loginContainer, "view/Dashboard.fxml");
+
+                    new SceneChanger(loginContainer, "/com/cht/TravelAndToursManagement/view/Dashboard.fxml");
                     loginMessageLabel.setText("Login Successfully!");
                 } else {
                     loginMessageLabel.setText("Invalid Login. Please try again.");

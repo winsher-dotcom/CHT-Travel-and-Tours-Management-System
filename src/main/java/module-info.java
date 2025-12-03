@@ -1,4 +1,4 @@
-module com.cht.TravelAndToursManagement {
+module com.cht.TravelAndToursManagement.client {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
@@ -7,4 +7,6 @@ module com.cht.TravelAndToursManagement {
 
     opens com.cht.TravelAndToursManagement.client.controller to javafx.fxml;
     exports com.cht.TravelAndToursManagement.client;
+//    opens com.cht.TravelAndToursManagement.client.controller to javafx.fxml;
+//    exports com.cht.TravelAndToursManagement.client;
 }
