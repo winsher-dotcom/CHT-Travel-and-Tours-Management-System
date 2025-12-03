@@ -1,22 +1,18 @@
-package com.cht.TravelAndToursManagement.controller;
+package com.cht.TravelAndToursManagement.client.controller;
 
 
-import com.cht.TravelAndToursManagement.config.DatabaseConnection;
-import javafx.event.ActionEvent;
+import com.cht.TravelAndToursManagement.client.config.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoginController {
@@ -62,8 +58,7 @@ public class LoginController {
                 if (queryResult.getInt(1) == 1) {
                     new SceneChanger(loginContainer, "view/Dashboard.fxml");
                     loginMessageLabel.setText("Login Successfully!");
-                }
-                else {
+                } else {
                     loginMessageLabel.setText("Invalid Login. Please try again.");
                 }
             }

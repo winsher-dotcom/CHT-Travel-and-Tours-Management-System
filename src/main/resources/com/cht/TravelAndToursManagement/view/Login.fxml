@@ -8,37 +8,49 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="loginContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cht.TravelAndToursManagement.controller.LoginController">
-   <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <AnchorPane prefHeight="400.0" prefWidth="275.0" style="-fx-background-color: grey;">
-               <children>
-                  <Label fx:id="label2" layoutX="29.0" layoutY="145.0" prefHeight="110.0" prefWidth="218.0" text="CHT Travel &amp; Tours Management System" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane layoutX="275.0" prefHeight="400.0" prefWidth="325.0">
-               <children>
-                  <Label fx:id="label" layoutX="83.0" layoutY="67.0" text="Welcome back Admin!" />
-                  <TextField fx:id="usernameTextField" layoutX="122.0" layoutY="142.0" promptText="Enter username" />
-                  <PasswordField fx:id="passwordPasswordField" layoutX="122.0" layoutY="196.0" promptText="Enter password" />
-                  <Button fx:id="button" layoutX="41.0" layoutY="254.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="26.0" prefWidth="244.0" text="LOGIN" />
-                  <Label fx:id="label1" layoutX="41.0" layoutY="146.0" text="Username">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Label fx:id="label11" layoutX="45.0" layoutY="200.0" text="Password">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Button fx:id="cancelButton" layoutX="41.0" layoutY="309.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="244.0" text="CANCEL" />
-                  <Label fx:id="loginMessageLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="111.0" prefHeight="18.0" prefWidth="244.0" textAlignment="CENTER" textFill="RED" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </children>
+<StackPane fx:id="loginContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.cht.TravelAndToursManagement.client.controller.LoginController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <AnchorPane prefHeight="400.0" prefWidth="275.0" style="-fx-background-color: grey;">
+                    <children>
+                        <Label fx:id="label2" layoutX="29.0" layoutY="145.0" prefHeight="110.0" prefWidth="218.0"
+                               text="CHT Travel &amp; Tours Management System" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font size="23.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="275.0" prefHeight="400.0" prefWidth="325.0">
+                    <children>
+                        <Label fx:id="label" layoutX="83.0" layoutY="67.0" text="Welcome back Admin!"/>
+                        <TextField fx:id="usernameTextField" layoutX="122.0" layoutY="142.0"
+                                   promptText="Enter username"/>
+                        <PasswordField fx:id="passwordPasswordField" layoutX="122.0" layoutY="196.0"
+                                       promptText="Enter password"/>
+                        <Button fx:id="button" layoutX="41.0" layoutY="254.0" mnemonicParsing="false"
+                                onAction="#loginButton" prefHeight="26.0" prefWidth="244.0" text="LOGIN"/>
+                        <Label fx:id="label1" layoutX="41.0" layoutY="146.0" text="Username">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="label11" layoutX="45.0" layoutY="200.0" text="Password">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="cancelButton" layoutX="41.0" layoutY="309.0" mnemonicParsing="false"
+                                onAction="#cancelButton" prefHeight="26.0" prefWidth="244.0" text="CANCEL"/>
+                        <Label fx:id="loginMessageLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="40.0"
+                               layoutY="111.0" prefHeight="18.0" prefWidth="244.0" textAlignment="CENTER"
+                               textFill="RED"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
 </StackPane>

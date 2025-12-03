@@ -1,4 +1,4 @@
-package com.cht.TravelAndToursManagement.config;
+package com.cht.TravelAndToursManagement.client.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

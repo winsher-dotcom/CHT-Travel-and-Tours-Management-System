@@ -5,6 +5,6 @@ module com.cht.TravelAndToursManagement {
     requires java.sql;
     requires mysql.connector.j;
 
-    opens com.cht.TravelAndToursManagement.controller to javafx.fxml;
-    exports com.cht.TravelAndToursManagement;
+    opens com.cht.TravelAndToursManagement.client.controller to javafx.fxml;
+    exports com.cht.TravelAndToursManagement.client;
 }
