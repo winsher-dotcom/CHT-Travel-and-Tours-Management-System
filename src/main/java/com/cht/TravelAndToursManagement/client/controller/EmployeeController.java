@@ -14,8 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class EmployeeController extends SceneController {
-    // DB Connection
-    DatabaseConfig connectNow = new DatabaseConfig();
 
     @FXML
     private TableView<Employee> TableContainer;
@@ -50,7 +48,7 @@ public class EmployeeController extends SceneController {
 
         ObservableList<Employee> data = FXCollections.observableArrayList();
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(employeeViewQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

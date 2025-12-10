@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.sql.*;
 
 public class AuthController extends SceneController {
-    // Db Connection
-    DatabaseConfig connectNow = new DatabaseConfig();
     private final AuthenticationService authService;
     private final NavigationService navigationService;
 
@@ -108,7 +106,7 @@ public class AuthController extends SceneController {
 
         String verifyLogin = "SELECT COUNT(1) FROM Employee WHERE Email = ? AND Password = ?";
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
              ResultSet resultSet = preparedStatement.executeQuery()) {
             preparedStatement.setString(1, email);
@@ -126,7 +124,7 @@ public class AuthController extends SceneController {
                         stage.setMaximized(true);
                         stage.setScene(mainScene);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        logger.error(e.getMessage());
                     }
 //                    loginMessageLabel.setText("Login Successfully!");
                 } else {
@@ -147,7 +145,7 @@ public class AuthController extends SceneController {
         String insertEmployee = "INSERT INTO Employee (name, email, contactNumber, password, isManager, isActive) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(insertEmployee)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, email);
@@ -158,7 +156,7 @@ public class AuthController extends SceneController {
 
             registerMessageLabel.setText("Account Created Successfully!");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             registerMessageLabel.setText("Error Creating Account!");
         }
 

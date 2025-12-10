@@ -13,10 +13,6 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class MainLayoutController extends SceneController implements Initializable {
-    // DB Connection
-    DatabaseConfig connectNow = new DatabaseConfig();
-
-
     @FXML
     public Label totalCustomer;
     @FXML
@@ -70,7 +66,7 @@ public class MainLayoutController extends SceneController implements Initializab
     public void displayTotalCustomers() {
         String customerCountQuery = "SELECT COUNT(*) AS total FROM client";
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(customerCountQuery);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -89,7 +85,7 @@ public class MainLayoutController extends SceneController implements Initializab
 
         String ongoingTripsQuery = "SELECT COUNT(*) AS ongoing FROM booking WHERE status = 'pending'";
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(ongoingTripsQuery);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -108,7 +104,7 @@ public class MainLayoutController extends SceneController implements Initializab
     public void displayUpcomingTrips() {
         String upcomingTripsQuery = "SELECT COUNT(*) AS upcoming FROM booking WHERE status = 'pending'";
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(upcomingTripsQuery);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -128,7 +124,7 @@ public class MainLayoutController extends SceneController implements Initializab
 
         String completedTripsQuery = "SELECT COUNT(*) AS completed FROM booking WHERE status = 'confirmed'";
 
-        try (Connection connectDB = connectNow.getConnection();
+        try (Connection connectDB = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connectDB.prepareStatement(completedTripsQuery);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
