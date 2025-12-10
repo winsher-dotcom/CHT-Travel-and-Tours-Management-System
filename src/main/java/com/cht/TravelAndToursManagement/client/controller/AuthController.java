@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Objects;
@@ -66,12 +67,16 @@ public class AuthController extends SceneController {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT COUNT(1) FROM Employee WHERE Email = '" + usernameTextField.getText() + "' AND Password = '" + passwordPasswordField.getText() + "';";
+        String email = usernameTextField.getText();
+        String password = passwordPasswordField.getText();
 
+        String verifyLogin = "SELECT COUNT(1) FROM Employee WHERE Email = ? AND Password = ?";
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            PreparedStatement pstmt = connectDB.prepareStatement(verifyLogin);
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet queryResult = pstmt.executeQuery(verifyLogin);
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
@@ -102,16 +107,23 @@ public class AuthController extends SceneController {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String insertEmployee =
-                "INSERT INTO employee (name, email, contactNumber, password, isManager, isActive) " +
-                        "VALUES ('" + nameTextField.getText() + "', '" +
-                        emailTextField.getText() + "', '" +
-                        contactNumberTextField.getText() + "', '" +
-                        confirmPasswordField.getText() + "', " +
-                        "b'0', b'1');";
+        String name = nameTextField.getText();
+        String email = emailTextField.getText();
+        String contactNumber = contactNumberTextField.getText();
+        String password = confirmPasswordField.getText();
+
+        String insertEmployee = "INSERT INTO Employee (name, email, contactNumber, password, isManager, isActive) VALUES (?, ?, ?, ?, ?, ?)";
+
+
         try {
-            Statement statement = connectDB.createStatement();
-            statement.executeUpdate(insertEmployee);
+            PreparedStatement pstmt = connectDB.prepareStatement(insertEmployee);
+            pstmt.setString(1, name);
+            pstmt.setString(2, email);
+            pstmt.setString(3, contactNumber);
+            pstmt.setString(4, password);
+            pstmt.setBoolean(5, false);
+            pstmt.setBoolean(6, true);
+
             registerMessageLabel.setText("Account Created Successfully!");
         } catch (Exception e) {
             e.printStackTrace();
