@@ -1,9 +1,16 @@
 package com.cht.TravelAndToursManagement.client.controller;
 
 import com.cht.TravelAndToursManagement.client.config.DatabaseConfig;
+import com.cht.TravelAndToursManagement.client.navigation.NavigationService;
+import com.cht.TravelAndToursManagement.client.navigation.Route;
+import com.cht.TravelAndToursManagement.client.service.DashboardService;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +20,11 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class MainLayoutController extends SceneController implements Initializable {
+    private static final Logger logger = LoggerFactory.getLogger(MainLayoutController.class);
+
+    private final DashboardService dashboardService;
+    private final NavigationService navigationService;
+
     @FXML
     public Label totalCustomer;
     @FXML
@@ -22,120 +34,52 @@ public class MainLayoutController extends SceneController implements Initializab
     @FXML
     public Label completedTrips;
 
+    public MainLayoutController(DashboardService dashboardService, NavigationService navigationService) {
+        this.dashboardService = dashboardService;
+        this.navigationService = navigationService;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        displayTotalCustomers();
-        displayOngoingTrips();
-        displayUpcomingTrips();
-        displayCompletedTrips();
+        loadDashboardStats();
 
     }
 
 
-    @FXML
-    public void addBooking() throws IOException {
-        setCenter("/com/cht/TravelAndToursManagement/view/AddBooking1-view.fxml");
-
-    }
-
-
-    @FXML
-    public void addBookingStep2() throws IOException {
-        setCenter("/com/cht/TravelAndToursManagement/view/AddBooking2-view.fxml");
-    }
-
-    @FXML
-    public void goToDashboard() throws IOException {
-
-        setCenter("/com/cht/TravelAndToursManagement/view/MainLayout-view.fxml");
-    }
-
-    @FXML
-    public void goToDashboard2() throws IOException {
-
-        setCenter("/com/cht/TravelAndToursManagement/view/MainLayout-view2.fxml");
+    private void loadDashboardStats() {
+        Task<DashboardStats> statsTask = new Task<>() {
+            @Override
+            protected DashboardStats call() {
+                return dashboardService.getDashboardStats();
+            }
+        };
+        statsTask.setOnSucceeded(event -> {
+            DashboardStats stats = statsTask.getValue();
+            totalCustomer.setText(String.valueOf(stats.totalCustomers()));
+            ongoingTrips.setText(String.valueOf(stats.ongoingTrips()));
+            upcomingTrips.setText(String.valueOf(stats.upcomingTrips()));
+            completedTrips.setText(String.valueOf(stats.completedTrips()));
+        });
+        statsTask.setOnFailed(event -> {
+            logger.error("Failed to load dashboard stats", statsTask.getException());
+            showError("Failed to load dashboard data");
+        });
+        new Thread(statsTask).start();
     }
 
     @FXML
     public void goToEmployee() {
-        setCenter("/com/cht/TravelAndToursManagement/view/Employee-view.fxml");
+        navigationService.navigateTo(Route.EMPLOYEE);
     }
 
-    //    display the total number of customers in the dashboard
-    public void displayTotalCustomers() {
-        String customerCountQuery = "SELECT COUNT(*) AS total FROM client";
-
-        try (Connection connectDB = DatabaseConfig.getConnection();
-             PreparedStatement preparedStatement = connectDB.prepareStatement(customerCountQuery);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                int totalCustomers = resultSet.getInt("total");
-                totalCustomer.setText(String.valueOf(totalCustomers));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    public void addBooking() {
+        navigationService.navigateTo(Route.BOOKING);
     }
 
-    //    display the ongoing trips in the dashboard
-    public void displayOngoingTrips() {
-
-        String ongoingTripsQuery = "SELECT COUNT(*) AS ongoing FROM booking WHERE status = 'pending'";
-
-        try (Connection connectDB = DatabaseConfig.getConnection();
-             PreparedStatement preparedStatement = connectDB.prepareStatement(ongoingTripsQuery);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                int ongoingTripsCount = resultSet.getInt("ongoing");
-                ongoingTrips.setText(String.valueOf(ongoingTripsCount));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    //   display the upcoming trips in the dashboard
-    public void displayUpcomingTrips() {
-        String upcomingTripsQuery = "SELECT COUNT(*) AS upcoming FROM booking WHERE status = 'pending'";
-
-        try (Connection connectDB = DatabaseConfig.getConnection();
-             PreparedStatement preparedStatement = connectDB.prepareStatement(upcomingTripsQuery);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                int upcomingTripsCount = resultSet.getInt("upcoming");
-                upcomingTrips.setText(String.valueOf(upcomingTripsCount));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    // display the completed trips in the dashboard
-    public void displayCompletedTrips() {
-
-        String completedTripsQuery = "SELECT COUNT(*) AS completed FROM booking WHERE status = 'confirmed'";
-
-        try (Connection connectDB = DatabaseConfig.getConnection();
-             PreparedStatement preparedStatement = connectDB.prepareStatement(completedTripsQuery);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                int completedTripsCount = resultSet.getInt("completed");
-                completedTrips.setText(String.valueOf(completedTripsCount));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.showAndWait();
     }
 }
 

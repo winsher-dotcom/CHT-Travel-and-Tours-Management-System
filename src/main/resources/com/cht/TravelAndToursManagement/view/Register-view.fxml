@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="contentArea" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.cht.TravelAndToursManagement.client.controller.AuthController">
+<BorderPane fx:id="contentArea" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
     <center>
 
         <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" BorderPane.alignment="CENTER">

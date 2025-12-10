@@ -5,6 +5,7 @@ import com.cht.TravelAndToursManagement.client.config.DatabaseConfig;
 import com.cht.TravelAndToursManagement.client.navigation.NavigationService;
 import com.cht.TravelAndToursManagement.client.navigation.Route;
 import com.cht.TravelAndToursManagement.client.service.AuthenticationService;
+import com.cht.TravelAndToursManagement.client.utils.ValidationUtils;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,8 +73,7 @@ public class AuthController extends SceneController {
         String email = usernameTextField.getText();
         String password = passwordPasswordField.getText();
 
-        if (email.isBlank() || password.isBlank()) {
-            loginMessageLabel.setText("Username or password is empty");
+        if (!validateInput(email, password)) {
             return;
         }
         Task<Boolean> loginTask = new Task<>() {
@@ -90,6 +90,13 @@ public class AuthController extends SceneController {
                 loginMessageLabel.setText("Invalid credentials");
             }
         });
+        loginTask.setOnFailed(event -> {
+            loginButton.setDisable(false);
+            Throwable exception = loginTask.getException();
+            logger.error("Login failed", exception);
+            loginMessageLabel.setText("Login failed: " + exception.getMessage());
+        });
+
 
         new Thread(loginTask).start();
     }
@@ -98,6 +105,23 @@ public class AuthController extends SceneController {
         Stage stage = (Stage) loginContainer.getScene().getWindow();
         stage.close();
 
+    }
+
+    private boolean validateInput(String email, String password) {
+        if (email.isBlank() || password.isBlank()) {
+            loginMessageLabel.setText("Email and password are required");
+            return false;
+        }
+        if (!ValidationUtils.isValidEmail(email)) {
+            loginMessageLabel.setText("Invalid email format");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    public void onRegisterButtonClicked() {
+        navigationService.navigateTo(Route.REGISTER);
     }
 
     public void validateLogin() {

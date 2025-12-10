@@ -18,12 +18,24 @@ public class NavigationService {
         this.primaryStage = primaryStage;
         this.controllerFactory = factory;
         this.routeMap = initializedRoutes();
+
+        navigateTo(Route.LOGIN);
+    }
+
+    private Map<Route, String> initializedRoutes() {
+        return Map.of(
+                Route.LOGIN, FXMLPaths.LOGIN,
+                Route.DASHBOARD, FXMLPaths.DASHBOARD,
+                Route.EMPLOYEE, FXMLPaths.EMPLOYEE,
+                Route.REGISTER, FXMLPaths.REGISTER
+        );
     }
 
 
     public void navigateTo(Route route) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(routeMap.get(route)));
+            String fxmlPath = routeMap.get(route);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(routeMap.get(fxmlPath)));
             loader.setControllerFactory(controllerFactory);
             Parent root = loader.load();
 

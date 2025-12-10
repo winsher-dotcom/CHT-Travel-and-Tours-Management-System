@@ -1,76 +1,67 @@
 package com.cht.TravelAndToursManagement.client.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-
 public class Employee {
-    private final SimpleStringProperty name;
-    private final SimpleStringProperty email;
-    private final SimpleStringProperty contactNumber;
-    private final SimpleStringProperty isManager;
-    private final SimpleStringProperty isActive;
+    private int employeeId;
+    private String name;
+    private String email;
+    private String contactNumber;
+    private boolean isManager;
+    private boolean isActive;
 
-    public Employee(String name, String email, String contactNumber, boolean isManager, boolean isActive) {
-        this.name = new SimpleStringProperty(name);
-        this.email = new SimpleStringProperty(email);
-        this.contactNumber = new SimpleStringProperty(contactNumber);
-        this.isManager = new SimpleStringProperty(String.valueOf(isManager));
-        this.isActive = new SimpleStringProperty(String.valueOf(isActive));
+    // Constructor, getters, setter
+    // No JavaFX dependencies
+    public Employee(int employeeId, String name, String email, String contactNumber, boolean isManager, boolean isActive) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.isManager = isManager;
+        this.isActive = isActive;
     }
 
-    // Getters
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
     public String getName() {
-        return name.get();
+        return name;
     }
 
     public String getEmail() {
-        return email.get();
+        return email;
     }
 
     public String getContactNumber() {
-        return contactNumber.get();
+        return contactNumber;
     }
 
-    public SimpleStringProperty isManager() {
+    public boolean isManager() {
         return isManager;
     }
 
-    public SimpleStringProperty isActive() {
+    public boolean isActive() {
         return isActive;
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
     public void setEmail(String email) {
-        this.email.set(email);
+        this.email = email;
     }
 
     public void setContactNumber(String contactNumber) {
-        this.contactNumber.set(contactNumber);
+        this.contactNumber = contactNumber;
     }
 
-    //    public void setIsManager(boolean manager) {
-//        isManager = manager;
-//    }
-    public ObservableValue<String> nameProperty() {
-        return name;
+    public void setManager(boolean manager) {
+        isManager = manager;
     }
 
-    public ObservableValue<String> emailProperty() {
-        return email;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
-    public ObservableValue<String> contactNumberProperty() {
-        return contactNumber;
-    }
 
-    public ObservableValue<String> isManagerProperty() {
-        return isManager;
-    }
-
-    public ObservableValue<String> isActiveProperty() {
-        return isActive;
-    }
 }

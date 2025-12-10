@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ public class DatabaseConfig {
     private static final Logger logger =
             LoggerFactory.getLogger(DatabaseConfig.class);
 
-    private static HikariDataSource dataSource;
+    public static HikariDataSource dataSource;
 
     static {
         try {
@@ -22,9 +23,11 @@ public class DatabaseConfig {
             config.setJdbcUrl(ConfigLoader.get("db.url"));
             config.setUsername(ConfigLoader.get("db.username"));
             config.setPassword(ConfigLoader.get("db.password"));
-            config.setMaximumPoolSize(ConfigLoader.getInt("db.maximumPoolSize"));
-            config.setMinimumIdle(ConfigLoader.getInt("db.minimumIdle"));
-            config.setMaxLifetime(ConfigLoader.getInt("db.maxLifetime"));
+            config.setMaximumPoolSize(ConfigLoader.getInt("db.pool.max"));
+            config.setMinimumIdle(ConfigLoader.getInt("db.pool.min"));
+            config.setMaxLifetime(ConfigLoader.getInt("db.pool.timeout"));
+
+            dataSource = new HikariDataSource(config);
         } catch (Exception e) {
             logger.error("Failed to initialize HikariCP", e);
             throw new ExceptionInInitializerError(e);
@@ -34,7 +37,12 @@ public class DatabaseConfig {
     private DatabaseConfig() {
     }
 
+    public static DataSource getDataSource() {
+        return dataSource;
+    }
+
     public static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
+
 }

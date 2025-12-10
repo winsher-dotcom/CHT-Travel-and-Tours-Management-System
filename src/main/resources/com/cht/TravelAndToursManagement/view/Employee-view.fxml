@@ -6,8 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="contentArea" prefHeight="504.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.cht.TravelAndToursManagement.client.controller.EmployeeController">
+            xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- LEFT SIDEBAR -->
 
