@@ -14,11 +14,15 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EmployeeController extends SceneController {
+    // DB Connection
+    DatabaseConnection connectNow = new DatabaseConnection();
+
     @FXML
     private TableView<Employee> TableContainer;
     @FXML
@@ -48,16 +52,13 @@ public class EmployeeController extends SceneController {
     }
 
     public void buildTable() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
         String employeeViewQuery = "SELECT name, email, contactNumber, isManager, isActive FROM employee";
 
         ObservableList<Employee> data = FXCollections.observableArrayList();
 
-        try {
-            ResultSet resultSet = connectDB.createStatement().executeQuery(employeeViewQuery);
-            // SELECT name, email, contactNumber, isManager, isActive FROM employee
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(employeeViewQuery)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 data.add(new Employee(
                         resultSet.getString("name"),

@@ -12,12 +12,17 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.mysql.cj.conf.PropertyKey.logger;
 
 public class MainLayoutController extends SceneController implements Initializable {
+    // DB Connection
+    DatabaseConnection connectNow = new DatabaseConnection();
+
 
     @FXML
     public Label totalCustomer;
@@ -70,17 +75,14 @@ public class MainLayoutController extends SceneController implements Initializab
 
     //    display the total number of customers in the dashboard
     public void displayTotalCustomers() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
         String customerCountQuery = "SELECT COUNT(*) AS total FROM client";
 
-        try {
-            var statement = connectDB.createStatement();
-            var queryResult = statement.executeQuery(customerCountQuery);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(customerCountQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            while (queryResult.next()) {
-                int totalCustomers = queryResult.getInt("total");
+            while (resultSet.next()) {
+                int totalCustomers = resultSet.getInt("total");
                 totalCustomer.setText(String.valueOf(totalCustomers));
             }
 
@@ -91,17 +93,15 @@ public class MainLayoutController extends SceneController implements Initializab
 
     //    display the ongoing trips in the dashboard
     public void displayOngoingTrips() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
 
         String ongoingTripsQuery = "SELECT COUNT(*) AS ongoing FROM booking WHERE status = 'pending'";
 
-        try {
-            var statement = connectDB.createStatement();
-            var queryResult = statement.executeQuery(ongoingTripsQuery);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(ongoingTripsQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            while (queryResult.next()) {
-                int ongoingTripsCount = queryResult.getInt("ongoing");
+            while (resultSet.next()) {
+                int ongoingTripsCount = resultSet.getInt("ongoing");
                 ongoingTrips.setText(String.valueOf(ongoingTripsCount));
             }
 
@@ -113,17 +113,14 @@ public class MainLayoutController extends SceneController implements Initializab
 
     //   display the upcoming trips in the dashboard
     public void displayUpcomingTrips() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
         String upcomingTripsQuery = "SELECT COUNT(*) AS upcoming FROM booking WHERE status = 'pending'";
 
-        try {
-            var statement = connectDB.createStatement();
-            var queryResult = statement.executeQuery(upcomingTripsQuery);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(upcomingTripsQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            while (queryResult.next()) {
-                int upcomingTripsCount = queryResult.getInt("upcoming");
+            while (resultSet.next()) {
+                int upcomingTripsCount = resultSet.getInt("upcoming");
                 upcomingTrips.setText(String.valueOf(upcomingTripsCount));
             }
 
@@ -135,17 +132,15 @@ public class MainLayoutController extends SceneController implements Initializab
 
     // display the completed trips in the dashboard
     public void displayCompletedTrips() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
 
         String completedTripsQuery = "SELECT COUNT(*) AS completed FROM booking WHERE status = 'confirmed'";
 
-        try {
-            var statement = connectDB.createStatement();
-            var queryResult = statement.executeQuery(completedTripsQuery);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(completedTripsQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            while (queryResult.next()) {
-                int completedTripsCount = queryResult.getInt("completed");
+            while (resultSet.next()) {
+                int completedTripsCount = resultSet.getInt("completed");
                 completedTrips.setText(String.valueOf(completedTripsCount));
             }
 

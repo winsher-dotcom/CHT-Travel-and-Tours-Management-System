@@ -22,16 +22,29 @@ import java.sql.Statement;
 import java.util.Objects;
 
 public class AuthController extends SceneController {
-    public Button createAccountButton;
-    public Label registerMessageLabel;
-    public Label nameLabel;
-    public TextField nameTextField;
-    public Label emailLabel;
-    public TextField emailTextField;
-    public TextField contactNumberTextField;
-    public Label passwordLabel;
-    public Label confirmPasswordLabel;
-    public PasswordField confirmPasswordField;
+    // Db Connection
+    DatabaseConnection connectNow = new DatabaseConnection();
+
+    @FXML
+    private Button createAccountButton;
+    @FXML
+    private Label registerMessageLabel;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private Label emailLabel;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField contactNumberTextField;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label confirmPasswordLabel;
+    @FXML
+    private PasswordField confirmPasswordField;
     @FXML
     private BorderPane loginContainer;
     @FXML
@@ -64,22 +77,19 @@ public class AuthController extends SceneController {
     }
 
     public void validateLogin() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
         String email = usernameTextField.getText();
         String password = passwordPasswordField.getText();
 
         String verifyLogin = "SELECT COUNT(1) FROM Employee WHERE Email = ? AND Password = ?";
 
-        try {
-            PreparedStatement pstmt = connectDB.prepareStatement(verifyLogin);
-            pstmt.setString(1, email);
-            pstmt.setString(2, password);
-            ResultSet queryResult = pstmt.executeQuery(verifyLogin);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
+            while (resultSet.next()) {
+                if (resultSet.getInt(1) == 1) {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cht/TravelAndToursManagement/view/MainLayout-view.fxml"));
                         BorderPane mainRoot = loader.load();
@@ -103,10 +113,6 @@ public class AuthController extends SceneController {
     }
 
     public void registerEmployee() {
-
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String contactNumber = contactNumberTextField.getText();
@@ -115,14 +121,14 @@ public class AuthController extends SceneController {
         String insertEmployee = "INSERT INTO Employee (name, email, contactNumber, password, isManager, isActive) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-        try {
-            PreparedStatement pstmt = connectDB.prepareStatement(insertEmployee);
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            pstmt.setString(3, contactNumber);
-            pstmt.setString(4, password);
-            pstmt.setBoolean(5, false);
-            pstmt.setBoolean(6, true);
+        try (Connection connectDB = connectNow.getConnection();
+             PreparedStatement preparedStatement = connectDB.prepareStatement(insertEmployee)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, contactNumber);
+            preparedStatement.setString(4, password);
+            preparedStatement.setBoolean(5, false);
+            preparedStatement.setBoolean(6, true);
 
             registerMessageLabel.setText("Account Created Successfully!");
         } catch (Exception e) {
