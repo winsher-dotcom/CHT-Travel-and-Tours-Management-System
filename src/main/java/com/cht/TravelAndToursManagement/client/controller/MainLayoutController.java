@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.mysql.cj.conf.PropertyKey.logger;
+
 public class MainLayoutController extends SceneController implements Initializable {
 
     @FXML
