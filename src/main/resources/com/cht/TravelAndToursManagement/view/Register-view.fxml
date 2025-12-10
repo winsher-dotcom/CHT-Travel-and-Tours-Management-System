@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="contentArea" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cht.TravelAndToursManagement.client.controller.AuthController">
+    <center>
+
+        <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <children>
+                <VBox alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER">
+                            <children>
+                                <Label fx:id="headerLabel" prefHeight="110.0" prefWidth="350.0"
+                                       text="CHT Travel &amp; Tours Management System - Register"
+                                       textAlignment="CENTER"
+                                       wrapText="true">
+                                    <font>
+                                        <Font size="23.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="40.0" style="-fx-border-color: black;">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label fx:id="registerMessageLabel" alignment="TOP_CENTER"
+                                               contentDisplay="CENTER"
+                                               prefHeight="18.0" prefWidth="300.0" textAlignment="CENTER"
+                                               textFill="RED"/>
+                                        <VBox spacing="20.0">
+                                            <children>
+
+                                                <!-- Name -->
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="nameLabel" text="Name">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextField fx:id="nameTextField" prefHeight="25.0"
+                                                                   prefWidth="220.0" promptText="Enter name"/>
+                                                    </children>
+                                                </VBox>
+
+                                                <!-- Email -->
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="emailLabel" text="Email">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextField fx:id="emailTextField" prefHeight="25.0"
+                                                                   prefWidth="220.0" promptText="Enter email"/>
+                                                    </children>
+                                                </VBox>
+
+                                                <!-- Contact Number -->
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="contactNumberLabel" text="Contact Number">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextField fx:id="contactNumberTextField" prefHeight="25.0"
+                                                                   prefWidth="220.0" promptText="Enter contact number"/>
+                                                    </children>
+                                                </VBox>
+
+                                                <!-- Password -->
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="passwordLabel" text="Password">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <PasswordField fx:id="passwordPasswordField"
+                                                                       promptText="Enter password"/>
+                                                    </children>
+                                                </VBox>
+
+                                                <!-- Confirm Password -->
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="confirmPasswordLabel" text="Confirm Password">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <PasswordField fx:id="confirmPasswordField"
+                                                                       promptText="Confirm password"/>
+                                                    </children>
+                                                </VBox>
+
+
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                                <VBox spacing="20.0">
+                                    <children>
+                                        <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER"
+                                                mnemonicParsing="false" onAction="#registerEmployee" prefHeight="25.0"
+                                                prefWidth="255.0" text="REGISTER" textAlignment="CENTER"/>
+                                        <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER"
+                                                maxWidth="255.0" mnemonicParsing="false" onAction="#cancelButton"
+                                                text="CANCEL" textAlignment="CENTER"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="30.0" left="40.0" right="40.0" top="20.0"/>
+                            </padding>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+                    </padding>
+                </VBox>
+            </children>
+        </FlowPane>
+    </center>
+</BorderPane>

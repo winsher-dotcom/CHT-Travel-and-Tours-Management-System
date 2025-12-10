@@ -2,255 +2,49 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
+<BorderPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
     <left>
         <VBox alignment="TOP_CENTER" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
             <children>
-                <Label prefHeight="34.0" prefWidth="99.0" text="CHT Travel and Tours" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Label prefHeight="34.0" prefWidth="99.0" text="CHT Travel and Tours" textAlignment="CENTER"
+                       textFill="WHITE" wrapText="true">
                     <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="12.0"/>
                     </font>
                 </Label>
                 <VBox prefHeight="342.0" prefWidth="126.0" spacing="10.0">
                     <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addBooking" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: none; -fx-background-color: transparent;" text="+ Add Booking" textFill="WHITE" />
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToDashboard" prefHeight="25.0" prefWidth="148.0" style="-fx-border-color: white; -fx-background-color: transparent;" text="Dashboard" textFill="WHITE" />
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" style="-fx-border-color: none; -fx-background-color: transparent;" text="Customer" textFill="WHITE" />
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" style="-fx-border-color: none; -fx-background-color: transparent;" text="Trips" textFill="WHITE" />
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-border-color: none; -fx-background-color: transparent;" text="Tour Packages" textFill="WHITE" />
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addBooking" prefHeight="25.0"
+                                prefWidth="147.0" style="-fx-border-color: none; -fx-background-color: transparent;"
+                                text="+ Add Booking" textFill="WHITE"/>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0"
+                                style="-fx-border-color: white; -fx-background-color: transparent;" text="Dashboard"
+                                textFill="WHITE"/>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0"
+                                style="-fx-border-color: none; -fx-background-color: transparent;" text="Customer"
+                                textFill="WHITE"/>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0"
+                                style="-fx-border-color: none; -fx-background-color: transparent;" text="Trips"
+                                textFill="WHITE"/>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0"
+                                style="-fx-border-color: none; -fx-background-color: transparent;" text="Tour Packages"
+                                textFill="WHITE"/>
                     </children>
                 </VBox>
             </children>
             <padding>
-                <Insets top="10.0" />
+                <Insets top="10.0"/>
             </padding>
         </VBox>
     </left>
     <center>
-        <VBox spacing="15.0" BorderPane.alignment="CENTER">
-            <children>
-                <VBox>
-                    <children>
-                        <Label text="Create New Booking" textAlignment="CENTER" wrapText="true" />
-                        <Label text="Follow the steps below to create a complete booking for your customer" textAlignment="CENTER" wrapText="true">
-                            <font>
-                                <Font size="9.0" />
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                    </VBox.margin>
-                </VBox>
-                <VBox>
-                    <children>
-                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="422.0" spacing="5.0">
-                            <children>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="1" textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0" />
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="2" textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="188.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0" />
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #007BFF;" text="3">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="824.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0" />
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="4" textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="844.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0" />
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="5" textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="1172.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0" />
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="6" textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="450.0" spacing="25.0" VBox.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Customer Info" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="10.0" layoutY="19.0" prefHeight="37.0" prefWidth="48.0" text="Package Selection" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="84.0" layoutY="19.0" text="Cuztomization" textAlignment="CENTER" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="158.0" layoutY="19.0" prefHeight="29.0" prefWidth="49.0" text="Hotel Selection" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                </Label>
-                                <Label layoutX="232.0" layoutY="19.0" text="Transportation" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="306.0" layoutY="19.0" prefHeight="37.0" prefWidth="51.0" text="Payment &amp;  Confirm" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
-                    </children>
-                </VBox>
-                <VBox prefHeight="597.0" prefWidth="564.0" spacing="15.0">
-                    <children>
-                        <VBox>
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Customize Package">
-                                    <font>
-                                        <Font name="Arial" size="13.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="#9a9a9a" strokeType="OUTSIDE" strokeWidth="0.0" text="Add or remove inclusions to match your customer's needs">
-                                    <font>
-                                        <Font size="10.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-commerce-style customization:" />
-                                <Text fill="#9a9a9a" strokeType="OUTSIDE" strokeWidth="0.0" text="Select or deselect inclusions like adding/removing items from a cart. The price updates in real-time.">
-                                    <font>
-                                        <Font size="10.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                            <padding>
-                                <Insets left="15.0" />
-                            </padding>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accomodation">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <CheckBox mnemonicParsing="false" prefHeight="43.0" prefWidth="478.0" text="Hotel Accomodation                                                                                                " />
-                            </children>
-                        </VBox>
-                        <VBox spacing="10.0">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transport">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <CheckBox mnemonicParsing="false" text="Transportation" />
-                            </children>
-                        </VBox>
-                        <VBox spacing="10.0">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activities">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <CheckBox mnemonicParsing="false" text="Island Tours " />
-                                <CheckBox mnemonicParsing="false" text="Island Hopping " />
-                                <CheckBox mnemonicParsing="false" text="Surf Lesson " />
-                                <CheckBox mnemonicParsing="false" text="City Tours" />
-                            </children>
-                        </VBox>
-                        <VBox spacing="10.0">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Meals">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <CheckBox mnemonicParsing="false" text="Meals (Breakfast &amp; lunch)" />
-                                <CheckBox mnemonicParsing="false" text="All Meals" />
-                                <CheckBox mnemonicParsing="false" text="Breakfast" />
-                            </children>
-                        </VBox>
-                        <VBox spacing="10.0">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Services">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <CheckBox mnemonicParsing="false" text="Tour Guide" />
-                                <CheckBox mnemonicParsing="false" text="Equipment Rental" />
-                            </children>
-                        </VBox>
-                    </children>
-                    <padding>
-                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
-                    </padding></VBox>
-                <FlowPane alignment="CENTER" hgap="80.0" nodeOrientation="LEFT_TO_RIGHT" vgap="20.0">
-                    <children>
-                        <Button mnemonicParsing="false" text="&lt; Back" />
-                        <Label text="Step 1 of 6" textAlignment="CENTER" wrapText="true">
-                            <font>
-                                <Font size="9.0" />
-                            </font>
-                        </Label>
-                        <Button mnemonicParsing="false" onAction="#addBookingStep2" text="Next &gt;" />
-                    </children>
-                </FlowPane>
-            </children>
-        </VBox>
+        <Label text="Dashboard" BorderPane.alignment="CENTER"/>
     </center>
 </BorderPane>
