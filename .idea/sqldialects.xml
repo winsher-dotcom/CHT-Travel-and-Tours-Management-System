@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/cht/TravelAndToursManagement/client/controller/AuthController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/cht/TravelAndToursManagement/client/controller/EmployeeController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/cht/TravelAndToursManagement/client/controller/MainLayoutController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cht/TravelAndToursManagement/client/repository/impl/EmployeeRepositoryImpl.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/test/resources/schema.sql" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

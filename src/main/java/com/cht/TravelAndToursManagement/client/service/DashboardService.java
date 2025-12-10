@@ -1,5 +1,8 @@
 package com.cht.TravelAndToursManagement.client.service;
 
+import com.cht.TravelAndToursManagement.client.repository.BookingRepository;
+import com.cht.TravelAndToursManagement.client.repository.CustomerRepository;
+
 public class DashboardService {
     private final BookingRepository bookingRepository;
     private final CustomerRepository customerRepository;
@@ -18,11 +21,34 @@ public class DashboardService {
         );
     }
 
-    public record DashboardStats(
-            int totalCustomers,
-            int ongoingBookings,
-            int upcomingBookings,
-            int confirmedBookings
-    ) {
+    // Immutable class equivalent to a record
+    public static class DashboardStats {
+        private final int totalCustomers;
+        private final int ongoingBookings;
+        private final int upcomingBookings;
+        private final int confirmedBookings;
+
+        public DashboardStats(int totalCustomers, int ongoingBookings, int upcomingBookings, int confirmedBookings) {
+            this.totalCustomers = totalCustomers;
+            this.ongoingBookings = ongoingBookings;
+            this.upcomingBookings = upcomingBookings;
+            this.confirmedBookings = confirmedBookings;
+        }
+
+        public int getTotalCustomers() {
+            return totalCustomers;
+        }
+
+        public int getOngoingBookings() {
+            return ongoingBookings;
+        }
+
+        public int getUpcomingBookings() {
+            return upcomingBookings;
+        }
+
+        public int getConfirmedBookings() {
+            return confirmedBookings;
+        }
     }
 }

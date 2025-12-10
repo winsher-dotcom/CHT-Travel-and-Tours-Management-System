@@ -26,43 +26,49 @@ public class ClientApp extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        // Create infrastructure
-        DataSource dataSource = DatabaseConfig.getDataSource();
+    public void start(Stage primaryStage) {
+        try {
+            // Create infrastructure
+            DataSource dataSource = DatabaseConfig.getDataSource();
 
-        // Create repositories
-        EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(dataSource);
-        BookingRepository bookingRepository = new BookingRepositoryImpl(dataSource);
-        CustomerRepository customerRepository = new CustomerRepositoryImpl(dataSource);
+            // Create repositories
+            EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(dataSource);
+            BookingRepository bookingRepository = new BookingRepositoryImpl(dataSource);
+            CustomerRepository customerRepository = new CustomerRepositoryImpl(dataSource);
 
-        // Create services
-        AuthenticationService authService = new AuthenticationService(employeeRepository);
-        DashboardService dashboardService = new DashboardService(bookingRepository, customerRepository);
+            // Create services
+            AuthenticationService authService = new AuthenticationService(employeeRepository);
+            DashboardService dashboardService = new DashboardService(bookingRepository, customerRepository);
 
-        // Create controller factory
-        controllerFactory = new ControllerFactory();
-        navigationService = new NavigationService(primaryStage, controllerFactory);
+            // Create controller factory and navigation service
+            ControllerFactory controllerFactory = new ControllerFactory();
+            NavigationService navigationService = new NavigationService(primaryStage, controllerFactory);
 
-        // Register controllers with dependencies
-        controllerFactory.registerController(
-                AuthController.class,
-                new AuthController(authService, navigationService)
-        );
-        controllerFactory.registerController(
-                MainLayoutController.class,
-                new MainLayoutController(dashboardService, navigationService)
-        );
-        controllerFactory.registerController(
-                EmployeeController.class,
-                new EmployeeController(employeeRepository, navigationService)
-        );
+            // Register controllers
+            controllerFactory.registerController(
+                    AuthController.class,
+                    new AuthController(authService, navigationService)
+            );
+            controllerFactory.registerController(
+                    MainLayoutController.class,
+                    new MainLayoutController(dashboardService, navigationService)
+            );
+            controllerFactory.registerController(
+                    EmployeeController.class,
+                    new EmployeeController(employeeRepository, navigationService)
+            );
 
-        // Start navigation (shows login screen)
-        navigationService.navigateTo(Route.LOGIN);
+            // Start navigation
+            navigationService.navigateTo(Route.LOGIN);
 
-        primaryStage.setTitle("CHT Travel & Tours");
+            primaryStage.setTitle("CHT Travel & Tours");
+            primaryStage.show();
 
+        } catch (Exception e) {
+            showErrorDialog("Failed to start application", e);
+        }
     }
+
 
     private void showErrorDialog(String message, Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
