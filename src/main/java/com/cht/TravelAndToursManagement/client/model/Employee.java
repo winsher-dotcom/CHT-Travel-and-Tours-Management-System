@@ -9,8 +9,6 @@ public class Employee {
     private boolean isManager;
     private boolean isActive;
 
-    // Constructor, getters, setter
-    // No JavaFX dependencies
     public Employee(int employeeId, String name, String email, String contactNumber, boolean isManager, boolean isActive) {
         this.employeeId = employeeId;
         this.name = name;
@@ -64,6 +62,10 @@ public class Employee {
         this.email = email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
@@ -77,6 +79,4 @@ public class Employee {
     }
 
 
-    public void setPassword(String password) {
-    }
 }
