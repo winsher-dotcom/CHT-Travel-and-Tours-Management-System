@@ -1,0 +1,30 @@
+.sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+}
+
+.sidebar-header {
+    -fx-padding: 20;
+}
+
+.logo-box {
+    -fx-background-color: #2D9D78;
+    -fx-background-radius: 8;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+}
+
+.menu Button {
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 16;
+}
+
+.menu Button:hover {
+    -fx-background-color: #f3f4f6;
+}
+
+.sidebar-footer {
+    -fx-padding: 16;
+    -fx-border-color: #e5e7eb;
+}

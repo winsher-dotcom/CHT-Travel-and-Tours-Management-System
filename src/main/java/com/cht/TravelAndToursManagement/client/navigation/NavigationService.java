@@ -28,7 +28,8 @@ public class NavigationService {
         map.put(Route.DASHBOARD, FXMLPaths.DASHBOARD);
         map.put(Route.EMPLOYEE, FXMLPaths.EMPLOYEE);
         map.put(Route.REGISTER, FXMLPaths.REGISTER);
-        map.put(Route.BOOKING, FXMLPaths.BOOKING_STEP1);
+        map.put(Route.BOOKING, FXMLPaths.BOOKING);
+        map.put(Route.BOOKING_STEP1, FXMLPaths.BOOKING_STEP1);
         return map;
     }
 
@@ -44,6 +45,8 @@ public class NavigationService {
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
+            
+
             primaryStage.setMaximized(true);
 
             primaryStage.setScene(scene);

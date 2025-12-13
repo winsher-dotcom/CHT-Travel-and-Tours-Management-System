@@ -9,10 +9,10 @@ public final class FXMLPaths {
 
     // Route mappings
     public static final String LOGIN = "/com/cht/TravelAndToursManagement/view/Login-view.fxml";
-    public static final String DASHBOARD = MAIN_LAYOUT; // dashboard uses main layout shell
+    public static final String DASHBOARD = MAIN_LAYOUT;
     public static final String EMPLOYEE = "/com/cht/TravelAndToursManagement/view/Employee-view.fxml";
     public static final String REGISTER = "/com/cht/TravelAndToursManagement/view/Register-view.fxml";
-    // Treat booking as starting at step 1 for top-level navigation
+    public static final String BOOKING = "/com/cht/TravelAndToursManagement/view/booking/Booking-view.fxml";
     public static final String BOOKING_STEP1 = "/com/cht/TravelAndToursManagement/view/AddBooking1-view.fxml";
 
 

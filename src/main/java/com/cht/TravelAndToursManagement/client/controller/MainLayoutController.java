@@ -1,22 +1,29 @@
 package com.cht.TravelAndToursManagement.client.controller;
 
 import com.cht.TravelAndToursManagement.client.navigation.FXMLPaths;
+import com.cht.TravelAndToursManagement.client.navigation.NavigationService;
 import com.cht.TravelAndToursManagement.client.navigation.Route;
 import com.cht.TravelAndToursManagement.client.service.DashboardService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class MainLayoutController {
-    private static final Logger logger = LoggerFactory.getLogger(MainLayoutController.class);
+public class MainLayoutController extends ErrorDialog {
+    public static final Logger logger = LoggerFactory.getLogger(MainLayoutController.class);
 
     private final DashboardService dashboardService;
 
@@ -33,8 +40,14 @@ public class MainLayoutController {
     @FXML
     public Label completedTrips;
 
-    public MainLayoutController(DashboardService dashboardService, com.cht.TravelAndToursManagement.client.navigation.NavigationService navigationService) {
+    @FXML
+    public Button addBookingButton;
+
+    private final NavigationService navigationService;
+
+    public MainLayoutController(DashboardService dashboardService, NavigationService navigationService) {
         this.dashboardService = dashboardService;
+        this.navigationService = navigationService;
     }
 
     /**
@@ -60,13 +73,48 @@ public class MainLayoutController {
     }
 
     @FXML
-    public void addBooking() {
-        // Load first booking step inside the existing main layout (sidebar preserved)
-        setCenterContent(FXMLPaths.BOOKING_STEP1);
+    public void goToBookingView() {
+        // Load Booking center content inside the existing main layout (sidebar preserved)
+
+        setCenterContent(FXMLPaths.BOOKING);
+
+
     }
 
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message);
-        alert.showAndWait();
+    @FXML
+    private BorderPane root;
+
+    @FXML
+    private VBox titleBox;
+
+    @FXML
+    private VBox profileBox;
+
+    private boolean collapsed = false;
+
+    @FXML
+    private void toggleSidebar() {
+        collapsed = !collapsed;
+
+
+        if (collapsed) {
+            root.setPrefWidth(80);
+            titleBox.setVisible(false);
+            profileBox.setVisible(false);
+        } else {
+            root.setPrefWidth(280);
+            titleBox.setVisible(true);
+            profileBox.setVisible(true);
+        }
     }
+
+
+    public void addBooking(ActionEvent actionEvent) {
+        // Load first booking step inside the existing main layout (sidebar preserved)
+        setCenterContent(FXMLPaths.BOOKING_STEP1);
+
+
+    }
+
+
 }
