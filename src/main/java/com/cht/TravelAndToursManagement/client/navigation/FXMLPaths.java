@@ -15,6 +15,7 @@ public final class FXMLPaths {
     // Treat booking as starting at step 1 for top-level navigation
     public static final String BOOKING_STEP1 = "/com/cht/TravelAndToursManagement/view/AddBooking1-view.fxml";
 
+
     public enum BookingStatus {
         PENDING("pending"),
         CONFIRMED("confirmed"),

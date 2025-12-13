@@ -28,7 +28,6 @@ public class NavigationService {
         map.put(Route.DASHBOARD, FXMLPaths.DASHBOARD);
         map.put(Route.EMPLOYEE, FXMLPaths.EMPLOYEE);
         map.put(Route.REGISTER, FXMLPaths.REGISTER);
-        // If BOOKING should be a top-level screen, map it to the first booking step for now
         map.put(Route.BOOKING, FXMLPaths.BOOKING_STEP1);
         return map;
     }
