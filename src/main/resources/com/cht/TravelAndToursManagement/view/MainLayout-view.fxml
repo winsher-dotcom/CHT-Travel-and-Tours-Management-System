@@ -10,10 +10,12 @@
 <BorderPane fx:id="contentArea" prefWidth="805.0" xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
+
     <left>
-        <fx:include source="Sidebar-view.fxml"/>
+        <fx:include source="reusableComponents/Sidebar-view.fxml"/>
     </left>
     <center>
+
         <fx:include source="DashboardContent-view.fxml"/>
     </center>
 </BorderPane>

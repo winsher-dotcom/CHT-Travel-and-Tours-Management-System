@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" spacing="16" styleClass="header-bar" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
+
+    <!-- Page Title -->
+    <VBox spacing="2">
+        <Label fx:id="pageTitle" styleClass="header-title" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+
+        <!-- Breadcrumb -->
+        <HBox alignment="CENTER_LEFT" spacing="6">
+            <Label fx:id="crumb1" styleClass="breadcrumb" text="Dashboard" />
+            <Label styleClass="breadcrumb-separator" text="&gt;" />
+            <Label fx:id="crumb2" styleClass="breadcrumb" text="Client" />
+            <Label fx:id="separator2" styleClass="breadcrumb-separator" text="&gt;" />
+            <Label fx:id="crumb3" styleClass="breadcrumb current" text="Details" />
+        </HBox>
+    </VBox>
+
+</HBox>
