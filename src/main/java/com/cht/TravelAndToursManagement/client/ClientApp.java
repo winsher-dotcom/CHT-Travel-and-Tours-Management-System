@@ -2,6 +2,7 @@ package com.cht.TravelAndToursManagement.client;
 
 import com.cht.TravelAndToursManagement.client.config.DatabaseConfig;
 import com.cht.TravelAndToursManagement.client.controller.AuthController;
+import com.cht.TravelAndToursManagement.client.controller.BookingController;
 import com.cht.TravelAndToursManagement.client.controller.EmployeeController;
 import com.cht.TravelAndToursManagement.client.controller.MainLayoutController;
 import com.cht.TravelAndToursManagement.client.navigation.ControllerFactory;
@@ -23,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import javax.sql.DataSource;
+import java.awt.print.Book;
 import java.io.IOException;
 
 
@@ -61,6 +63,7 @@ public class ClientApp extends Application {
                     EmployeeController.class,
                     new EmployeeController(employeeRepository, navigationService)
             );
+            controllerFactory.registerController(BookingController.class, new BookingController(dashboardService, navigationService, controllerFactory));
 
             // Start navigation
             navigationService.navigateTo(Route.LOGIN);

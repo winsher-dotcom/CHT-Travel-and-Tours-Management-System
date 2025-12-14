@@ -1,265 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="contentArea"
-            prefWidth="805.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
-    <center>
-        <VBox spacing="15.0" BorderPane.alignment="CENTER">
-            <children>
-                <VBox>
-                    <children>
-                        <Label text="Create New Booking" textAlignment="CENTER" wrapText="true"/>
-                        <Label text="Follow the steps below to create a complete booking for your customer"
-                               textAlignment="CENTER" wrapText="true">
-                            <font>
-                                <Font size="9.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="10.0" right="10.0"/>
-                    </VBox.margin>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cht.TravelAndToursManagement.client.controller.BookingController"
+            prefHeight="700" prefWidth="1100"
+            style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+
+    <!-- Modal Container -->
+    <StackPane AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50"
+               AnchorPane.rightAnchor="50">
+        <VBox style="-fx-background-color: white; -fx-border-radius: 12; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 24, 0, 0, 12);"
+              spacing="0">
+
+            <!-- Header Section -->
+            <HBox prefHeight="80" spacing="16" style="-fx-padding: 32 32 0 32;">
+                <VBox HBox.hgrow="ALWAYS" spacing="8">
+                    <Label text="New Booking"
+                           style="-fx-font-family: 'Inter'; -fx-font-size: 28; -fx-font-weight:  bold; -fx-text-fill: #2C3E50;"/>
+                    <Label text="Create a new travel booking for your customer"
+                           style="-fx-font-family: 'Inter'; -fx-font-size:  14; -fx-text-fill: #7F8C8D;"/>
                 </VBox>
-                <VBox>
-                    <children>
-                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="422.0" spacing="5.0">
-                            <children>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #007BFF;" text="1"
-                                       textFill="WHITE">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" startX="40.0" stroke="#b5b5b592" strokeWidth="2.0"/>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="2"
-                                       textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="188.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592"
-                                      strokeWidth="2.0"/>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="3"
-                                       textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="824.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592"
-                                      strokeWidth="2.0"/>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="4"
-                                       textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="844.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592"
-                                      strokeWidth="2.0"/>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="5"
-                                       textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                                <Line fill="#838383" layoutX="1172.0" layoutY="28.0" startX="40.0" stroke="#b5b5b592"
-                                      strokeWidth="2.0"/>
-                                <Label style="-fx-background-radius: 50; -fx-background-color: #F1F5F4;" text="6"
-                                       textFill="#909090">
-                                    <padding>
-                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                                    </padding>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="450.0" spacing="25.0" VBox.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Customer Info" textAlignment="CENTER" wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                                <Label layoutX="10.0" layoutY="19.0" prefHeight="37.0" prefWidth="48.0"
-                                       text="Package Selection" textAlignment="CENTER" textFill="#9a9a9a"
-                                       wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                                <Label layoutX="84.0" layoutY="19.0" text="Cuztomization" textAlignment="CENTER"
-                                       textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                                <Label layoutX="158.0" layoutY="19.0" prefHeight="29.0" prefWidth="49.0"
-                                       text="Hotel Selection" textAlignment="CENTER" textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets/>
-                                    </HBox.margin>
-                                </Label>
-                                <Label layoutX="232.0" layoutY="19.0" text="Transportation" textAlignment="CENTER"
-                                       textFill="#9a9a9a" wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                                <Label layoutX="306.0" layoutY="19.0" prefHeight="37.0" prefWidth="51.0"
-                                       text="Payment &amp;  Confirm" textAlignment="CENTER" textFill="#9a9a9a"
-                                       wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
-                    </children>
-                </VBox>
-                <HBox alignment="CENTER">
-                    <children>
-                        <VBox prefHeight="212.0" prefWidth="301.0" style="-fx-background-color: grey;">
-                            <children>
-                                <Label text="Customer Information" textAlignment="CENTER" wrapText="true">
-                                    <font>
-                                        <Font size="9.0"/>
-                                    </font>
-                                </Label>
-                                <VBox>
-                                    <children>
-                                        <Label text="Search Existing Customer" textAlignment="CENTER" wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <TextField promptText="Search by name or contact number..."/>
-                                    </children>
-                                </VBox>
-                                <HBox prefHeight="191.0" prefWidth="301.0" spacing="10.0">
-                                    <children>
-                                        <VBox prefHeight="187.0" prefWidth="149.0">
-                                            <children>
-                                                <Label text="Full Name"/>
-                                                <TextField promptText="Enter Customer Name"/>
-                                                <Label layoutX="10.0" layoutY="10.0" text="Email Address"/>
-                                                <TextField layoutX="10.0" layoutY="27.0"
-                                                           promptText="customer@gmail.com"/>
-                                                <Label layoutX="10.0" layoutY="52.0" text="Travel Start Date"/>
-                                                <DatePicker/>
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="187.0" prefWidth="149.0">
-                                            <children>
-                                                <Label text="Contact Number"/>
-                                                <TextField promptText="+6391 251 1750"/>
-                                                <Label text="Preferred Destination"/>
-                                                <TextField promptText="e.g. Boracay"/>
-                                                <Label text="Travel End Date"/>
-                                                <DatePicker/>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <VBox prefHeight="213.0" prefWidth="142.0" style="-fx-background-color: grEy;">
-                            <children>
-                                <VBox spacing="10.0">
-                                    <children>
-                                        <Label text="Booking Summary" textAlignment="CENTER" wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <Label text="Live Progress Tracker" textAlignment="CENTER" wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="10.0"/>
-                                    </VBox.margin>
-                                </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" spacing="15.0">
-                                    <children>
-                                        <Label text="Customer" textAlignment="CENTER" wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <Label text="Package" textAlignment="CENTER" wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="10.0" layoutY="23.0" text="Hotel" textAlignment="CENTER"
-                                               wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="10.0" layoutY="36.0" text="Transport" textAlignment="CENTER"
-                                               wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="10.0" layoutY="49.0" text="Total Cost" textAlignment="CENTER"
-                                               wrapText="true">
-                                            <font>
-                                                <Font size="9.0"/>
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </VBox>
-                    </children>
+                <Button fx:id="closeButton"
+                        style="-fx-padding: 8; -fx-background-color: transparent; -fx-font-size: 18; -fx-text-fill: #2C3E50; -fx-cursor: hand;"
+                        text="✕"/>
+            </HBox>
+
+            <!-- Progress Indicator Section -->
+            <VBox prefHeight="120" spacing="16" style="-fx-padding: 32 32 16 32;">
+                <!-- Progress Line with Steps -->
+                <HBox alignment="CENTER" spacing="0">
+                    <!-- Step 1: Customer -->
+                    <VBox alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <StackPane prefHeight="44" prefWidth="44">
+                            <Circle radius="22" fill="#27AE60" stroke="#27AE60" strokeWidth="2"/>
+                            <Label text="1"
+                                   style="-fx-font-family: 'Inter'; -fx-font-size:  16; -fx-font-weight:  bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Customer"
+                               style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill:  #2C3E50;"/>
+                    </VBox>
+
+                    <!-- Progress Line 1 -->
+                    <VBox prefWidth="80" alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Label text="━━━━━━━━━━"
+                               style="-fx-font-family: 'Inter'; -fx-text-fill: #E0E0E0; -fx-font-size: 10;"/>
+                    </VBox>
+
+                    <!-- Step 2: Package -->
+                    <VBox alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <StackPane prefHeight="44" prefWidth="44">
+                            <Circle radius="22" fill="#E0E0E0" stroke="#E0E0E0" strokeWidth="2"/>
+                            <Label text="2"
+                                   style="-fx-font-family: 'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Package"
+                               style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                    </VBox>
+
+                    <!-- Progress Line 2 -->
+                    <VBox prefWidth="80" alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Label text="━━━━━━━━━━"
+                               style="-fx-font-family: 'Inter'; -fx-text-fill: #E0E0E0; -fx-font-size: 10;"/>
+                    </VBox>
+
+                    <!-- Step 3: Travel Details -->
+                    <VBox alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <StackPane prefHeight="44" prefWidth="44">
+                            <Circle radius="22" fill="#E0E0E0" stroke="#E0E0E0" strokeWidth="2"/>
+                            <Label text="3"
+                                   style="-fx-font-family:  'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Travel Details"
+                               style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                    </VBox>
+
+                    <!-- Progress Line 3 -->
+                    <VBox prefWidth="80" alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Label text="━━━━━━━━━━"
+                               style="-fx-font-family: 'Inter'; -fx-text-fill: #E0E0E0; -fx-font-size: 10;"/>
+                    </VBox>
+
+                    <!-- Step 4: Payment -->
+                    <VBox alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <StackPane prefHeight="44" prefWidth="44">
+                            <Circle radius="22" fill="#E0E0E0" stroke="#E0E0E0" strokeWidth="2"/>
+                            <Label text="4"
+                                   style="-fx-font-family:  'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Payment"
+                               style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                    </VBox>
+
+                    <!-- Progress Line 4 -->
+                    <VBox prefWidth="80" alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Label text="━━━━━━━━━━"
+                               style="-fx-font-family: 'Inter'; -fx-text-fill: #E0E0E0; -fx-font-size: 10;"/>
+                    </VBox>
+
+                    <!-- Step 5:  Confirm -->
+                    <VBox alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <StackPane prefHeight="44" prefWidth="44">
+                            <Circle radius="22" fill="#E0E0E0" stroke="#E0E0E0" strokeWidth="2"/>
+                            <Label text="5"
+                                   style="-fx-font-family:  'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Confirm"
+                               style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                    </VBox>
                 </HBox>
-                <FlowPane alignment="CENTER" hgap="80.0" nodeOrientation="LEFT_TO_RIGHT" vgap="20.0">
-                    <children>
-                        <Button mnemonicParsing="false" text="&lt; Back"/>
-                        <Label text="Step 1 of 6" textAlignment="CENTER" wrapText="true">
-                            <font>
-                                <Font size="9.0"/>
-                            </font>
-                        </Label>
-                        <Button mnemonicParsing="false" text="Next &gt;" onAction="#addBookingStep2"/>
-                    </children>
-                </FlowPane>
-            </children>
+            </VBox>
+
+            <!-- Content Section -->
+            <VBox prefHeight="300" spacing="24" style="-fx-padding:  24 32 32 32;" VBox.vgrow="ALWAYS">
+
+                <!-- Title -->
+                <VBox spacing="8">
+                    <Label text="Customer Information"
+                           style="-fx-font-family: 'Inter'; -fx-font-size:  24; -fx-font-weight:  bold; -fx-text-fill: #2C3E50;"/>
+                    <Label text="Select an existing customer or add a new one to continue"
+                           style="-fx-font-family: 'Inter'; -fx-font-size:  14; -fx-text-fill:  #7F8C8D;"/>
+                </VBox>
+
+                <!-- Customer Selection Cards -->
+                <HBox spacing="24">
+                    <!-- Existing Customer Card -->
+                    <VBox fx:id="existingCustomerCard"
+                          style="-fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 24; -fx-background-color:  white; -fx-background-radius: 8; -fx-cursor: hand;"
+                          spacing="12" HBox.hgrow="ALWAYS">
+                        <HBox spacing="16" alignment="CENTER_LEFT">
+                            <Label text="👤" style="-fx-font-size: 32;"/>
+                            <VBox spacing="4">
+                                <Label text="Existing Customer"
+                                       style="-fx-font-family: 'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2C3E50;"/>
+                                <Label text="Search from records"
+                                       style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Add New Customer Card -->
+                    <VBox fx:id="newCustomerCard"
+                          style="-fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-border-width:  1; -fx-padding:  24; -fx-background-color: white; -fx-background-radius: 8; -fx-cursor: hand;"
+                          spacing="12" HBox.hgrow="ALWAYS">
+                        <HBox spacing="16" alignment="CENTER_LEFT">
+                            <Label text="➕" style="-fx-font-size: 32;"/>
+                            <VBox spacing="4">
+                                <Label text="Add New Customer"
+                                       style="-fx-font-family: 'Inter'; -fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2C3E50;"/>
+                                <Label text="Create new profile"
+                                       style="-fx-font-family: 'Inter'; -fx-font-size: 12; -fx-text-fill: #7F8C8D;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                
+            </VBox>
+
+            <!-- Footer Section - Buttons -->
+            <HBox prefHeight="70" spacing="12" style="-fx-padding: 0 32 32 32;" alignment="CENTER_RIGHT">
+                <Button fx:id="cancelButton" text="Cancel"
+                        style="-fx-padding: 10 16; -fx-font-family:  'Inter'; -fx-font-size: 14; -fx-font-weight: 500; -fx-text-fill: #0066CC; -fx-background-color: white; -fx-border-color: #0066CC; -fx-border-width:  2; -fx-border-radius: 6; -fx-cursor: hand;"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button fx:id="nextButton" text="Next Step"
+                        style="-fx-padding:  10 16; -fx-font-family: 'Inter'; -fx-font-size: 14; -fx-font-weight: 500; -fx-text-fill: white; -fx-background-color: #0066CC; -fx-border-radius: 6; -fx-cursor: hand;"
+                        disable="true" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+
         </VBox>
-    </center>
-</BorderPane>
+    </StackPane>
+
+</AnchorPane>

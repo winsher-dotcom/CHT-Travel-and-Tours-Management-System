@@ -31,15 +31,6 @@ public class EmployeeController {
         this.navigationService = navigationService;
     }
 
-    @FXML
-    public void goToEmployee() {
-        navigationService.navigateTo(Route.EMPLOYEE);
-    }
-
-    @FXML
-    public void addBooking() {
-        navigationService.navigateTo(Route.BOOKING);
-    }
 
     // Table-building logic can be re-enabled and refactored to use employeeRepository
     // rather than direct JDBC when you're ready.

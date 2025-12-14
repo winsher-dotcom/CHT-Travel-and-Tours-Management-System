@@ -22,10 +22,12 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MainLayoutController extends ErrorDialog {
+public class MainLayoutController {
     public static final Logger logger = LoggerFactory.getLogger(MainLayoutController.class);
 
-    private final DashboardService dashboardService;
+    protected final DashboardService dashboardService;
+    protected final NavigationService navigationService;
+
 
     // Root BorderPane from MainLayout-view.fxml (sidebar + center area)
     @FXML
@@ -43,42 +45,23 @@ public class MainLayoutController extends ErrorDialog {
     @FXML
     public Button addBookingButton;
 
-    private final NavigationService navigationService;
 
     public MainLayoutController(DashboardService dashboardService, NavigationService navigationService) {
         this.dashboardService = dashboardService;
         this.navigationService = navigationService;
     }
 
-    /**
-     * Swap the center content of the main layout while keeping the sidebar intact.
-     */
-    private void setCenterContent(String fxmlPath) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(fxmlPath)));
-            Node node = loader.load();
-            if (contentArea != null) {
-                contentArea.setCenter(node);
-            }
-        } catch (IOException e) {
-            logger.error("Failed to load center content FXML: {}", fxmlPath, e);
-            showError("Failed to load content");
-        }
-    }
-
     @FXML
     public void goToEmployee() {
         // Load Employee center content inside the existing main layout (sidebar preserved)
-        setCenterContent(FXMLPaths.EMPLOYEE);
+        navigationService.setCenterContent(FXMLPaths.EMPLOYEE);
     }
 
     @FXML
     public void goToBookingView() {
         // Load Booking center content inside the existing main layout (sidebar preserved)
 
-        setCenterContent(FXMLPaths.BOOKING);
-
-
+        navigationService.setCenterContent(FXMLPaths.BOOKING);
     }
 
     @FXML
@@ -106,14 +89,6 @@ public class MainLayoutController extends ErrorDialog {
             titleBox.setVisible(true);
             profileBox.setVisible(true);
         }
-    }
-
-
-    public void addBooking(ActionEvent actionEvent) {
-        // Load first booking step inside the existing main layout (sidebar preserved)
-        setCenterContent(FXMLPaths.BOOKING_STEP1);
-
-
     }
 
 

@@ -1,4 +1,4 @@
-package com.cht.TravelAndToursManagement.client.controller;
+package com.cht.TravelAndToursManagement.client.utils;
 
 import javafx.scene.control.Alert;
 

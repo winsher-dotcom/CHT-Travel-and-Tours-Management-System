@@ -15,20 +15,4 @@ public final class FXMLPaths {
     public static final String BOOKING = "/com/cht/TravelAndToursManagement/view/booking/Booking-view.fxml";
     public static final String BOOKING_STEP1 = "/com/cht/TravelAndToursManagement/view/AddBooking1-view.fxml";
 
-
-    public enum BookingStatus {
-        PENDING("pending"),
-        CONFIRMED("confirmed"),
-        CANCELLED("cancelled");
-
-        private final String value;
-
-        BookingStatus(String values) {
-            this.value = values;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
 }

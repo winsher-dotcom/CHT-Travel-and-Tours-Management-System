@@ -7,20 +7,18 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefWidth="280" styleClass="sidebar" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController" fx:id="root">
+<BorderPane fx:id="root" prefHeight="570.0" prefWidth="234.0" styleClass="sidebar" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cht.TravelAndToursManagement.client.controller.MainLayoutController">
 
     <!-- Logo -->
     <top>
         <VBox spacing="6" styleClass="sidebar-header">
             <HBox alignment="CENTER_LEFT" spacing="10">
                 <StackPane styleClass="logo-box">
-                    <Label styleClass="logo-icon" text="📍"/>
+                    <Label styleClass="logo-icon" text="📍" />
                 </StackPane>
                 <VBox fx:id="titleBox">
-                    <Label styleClass="title" text="CHT Travel and Tours"/>
-                    <Label styleClass="subtitle" text="Booking System"/>
+                    <Label styleClass="title" text="CHT Travel and Tours" />
+                    <Label styleClass="subtitle" text="Booking System" />
                 </VBox>
             </HBox>
         </VBox>
@@ -29,14 +27,15 @@
     <!-- Navigation -->
     <center>
         <VBox spacing="4" styleClass="menu">
-            <Button text="Dashboard"/>
-            <Button text="New Booking"/>
-            <Button text="Customer Records"/>
-            <Button text="Tour Packages"/>
-            <Button text="Hotels"/>
-            <Button text="Transportation"/>
-            <Button text="Payments"/>
-            <Button text="Reports"/>
+            <Button onAction="#goToBookingView" prefHeight="38.0" prefWidth="234.0" text="Dashboard" textFill="#108af5" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="238.0" text="New Booking" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="253.0" text="Customer Records" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="251.0" text="Tour Packages" VBox.vgrow="ALWAYS" />
+            <Button onAction="#goToEmployee" prefHeight="38.0" prefWidth="248.0" text="Employees" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="277.0" text="Hotels" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="259.0" text="Transportation" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="252.0" text="Payments" VBox.vgrow="ALWAYS" />
+            <Button prefHeight="38.0" prefWidth="259.0" text="Reports" VBox.vgrow="ALWAYS" />
         </VBox>
     </center>
 
@@ -47,16 +46,16 @@
             <!-- Profile -->
             <HBox alignment="CENTER_LEFT" spacing="10">
                 <StackPane styleClass="avatar">
-                    <Label styleClass="avatar-text" text="SJ"/>
+                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="21.0" styleClass="avatar-text" text="SJ" textAlignment="CENTER" />
                 </StackPane>
                 <VBox fx:id="profileBox">
-                    <Label styleClass="profile-name" text="Sarah Johnson"/>
-                    <Label styleClass="profile-role" text="Travel Agent"/>
+                    <Label styleClass="profile-name" text="Sarah Johnson" />
+                    <Label styleClass="profile-role" text="Travel Agent" />
                 </VBox>
             </HBox>
 
             <!-- Collapse Button -->
-            <Button styleClass="collapse-btn" text="⟨ Collapse" onAction="#toggleSidebar"/>
+            <Button onAction="#toggleSidebar" prefHeight="26.0" prefWidth="206.0" styleClass="collapse-btn" text="⟨ Collapse" />
         </VBox>
     </bottom>
 
