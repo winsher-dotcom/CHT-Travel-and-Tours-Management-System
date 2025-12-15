@@ -1,13 +1,13 @@
 package com.cht.TravelAndToursManagement.client.service;
 
 import com.cht.TravelAndToursManagement.client.repository.BookingRepository;
-import com.cht.TravelAndToursManagement.client.repository.CustomerRepository;
+import com.cht.TravelAndToursManagement.client.repository.ClientRepository;
 
 public class DashboardService {
     private final BookingRepository bookingRepository;
-    private final CustomerRepository customerRepository;
+    private final ClientRepository customerRepository;
 
-    public DashboardService(BookingRepository bookingRepository, CustomerRepository customerRepository) {
+    public DashboardService(BookingRepository bookingRepository, ClientRepository customerRepository) {
         this.bookingRepository = bookingRepository;
         this.customerRepository = customerRepository;
     }

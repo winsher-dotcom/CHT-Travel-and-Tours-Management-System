@@ -9,10 +9,9 @@ import com.cht.TravelAndToursManagement.client.navigation.ControllerFactory;
 import com.cht.TravelAndToursManagement.client.navigation.NavigationService;
 import com.cht.TravelAndToursManagement.client.navigation.Route;
 import com.cht.TravelAndToursManagement.client.repository.BookingRepository;
-import com.cht.TravelAndToursManagement.client.repository.CustomerRepository;
 import com.cht.TravelAndToursManagement.client.repository.EmployeeRepository;
 import com.cht.TravelAndToursManagement.client.repository.impl.BookingRepositoryImpl;
-import com.cht.TravelAndToursManagement.client.repository.impl.CustomerRepositoryImpl;
+import com.cht.TravelAndToursManagement.client.repository.impl.ClientRepositoryImpl;
 import com.cht.TravelAndToursManagement.client.repository.impl.EmployeeRepositoryImpl;
 import com.cht.TravelAndToursManagement.client.service.AuthenticationService;
 import com.cht.TravelAndToursManagement.client.service.DashboardService;
@@ -26,6 +25,7 @@ import javafx.stage.Stage;
 import javax.sql.DataSource;
 import java.awt.print.Book;
 import java.io.IOException;
+import com.cht.TravelAndToursManagement.client.repository.ClientRepository;
 
 
 public class ClientApp extends Application {
@@ -40,7 +40,7 @@ public class ClientApp extends Application {
             // Create repositories
             EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(dataSource);
             BookingRepository bookingRepository = new BookingRepositoryImpl(dataSource);
-            CustomerRepository customerRepository = new CustomerRepositoryImpl(dataSource);
+            ClientRepository customerRepository = new ClientRepositoryImpl(dataSource);
 
             // Create services
             AuthenticationService authService = new AuthenticationService(employeeRepository);
